@@ -1,35 +1,124 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>We</title>
-<link rel="stylesheet" href="css/style2.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/main.css" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true">
+  <meta charset="UTF-8">
+  <title>We</title>
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.transit.js"></script>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
 </head>
 
 <body>
 
-<div class="container">
-  <div class="box">
-    <div class="title"> <span class="block"></span>
-      <h1>爱比尔的第
-        <script language="JavaScript">
-          var urodz= new Date("11/10/2019");var now = new Date();var ile = now.getTime() - urodz.getTime();var dni = Math.floor(ile / (1000 * 60 * 60 * 24));document.write(+dni)
-        </script>天<span>.</span></h1>
-    </div>
-    <div class="role">
-      <div class="block"></div>
-      <p>We are together</p>
+
+
+
+  <div class="container">
+    <div class="box">
+      <div class="title"> <span class="block"></span>
+        <h1>爱比尔的第
+          <script language="JavaScript">
+            var urodz = new Date("11/10/2019"); var now = new Date(); var ile = now.getTime() - urodz.getTime(); var dni = Math.floor(ile / (1000 * 60 * 60 * 24)); document.write(+dni)
+          </script>天<span>.</span></h1>
+      </div>
+      <div class="role">
+        <div class="block"></div>
+        <p>We are together</p>
+      </div>
     </div>
   </div>
-</div>
+
+
+  <div id='content'>
+    <!-- 飘花 -->
+    <div id="snowflake"></div>
+  </div>
+  <script type="text/javascript">
+    $(function () {
+      var snowflakeURl = [
+        './images/icon_petal_1.png',
+        './images/icon_petal_2.png',
+        './images/icon_petal_3.png',
+        './images/icon_petal_4.png',
+        './images/icon_petal_5.png',
+        './images/icon_petal_6.png',
+        './images/icon_petal_7.png',
+        './images/icon_petal_8.png'
+      ]
+      var container = $("#content");
+      visualWidth = container.width();
+      visualHeight = container.height();
+      //获取content的宽高
+      function snowflake() {
+        // 雪花容器
+        var $flakeContainer = $('#snowflake');
+
+        // 随机六张图
+        function getImagesName() {
+          return snowflakeURl[[Math.floor(Math.random() * 8)]];
+        }
+        // 创建一个雪花元素
+        function createSnowBox() {
+          var url = getImagesName();
+          return $('<div class="snowbox" />').css({
+            'width': 25,
+            'height': 26,
+            'position': 'absolute',
+            'backgroundRepeat': 'no-repeat',
+            'zIndex': 100000,
+            'top': '-41px',
+            'backgroundImage': 'url(' + url + ')'
+          }).addClass('snowRoll');
+        }
+        // 开始飘花
+        setInterval(function () {
+          // 运动的轨迹
+          var startPositionLeft = Math.random() * visualWidth - 100,
+            startOpacity = 1,
+            endPositionTop = visualHeight - 40,
+            endPositionLeft = startPositionLeft - 100 + Math.random() * 500,
+            duration = visualHeight * 10 + Math.random() * 5000;
+          // 随机透明度，不小于0.5
+          var randomStart = Math.random();
+          randomStart = randomStart < 0.5 ? startOpacity : randomStart;
+          // 创建一个雪花
+          var $flake = createSnowBox();
+          // 设计起点位置
+          $flake.css({
+            left: startPositionLeft,
+            opacity: randomStart
+          });
+          // 加入到容器
+          $flakeContainer.append($flake);
+          // 开始执行动画
+          $flake.transition({
+            top: endPositionTop,
+            left: endPositionLeft,
+            opacity: 0.7
+          }, duration, 'ease-out', function () {
+            $(this).remove() //结束后删除
+          });
+        }, 500);
+      }
+      snowflake()
+      //执行函数
+    })
+  </script>
+
+
 
 </body>
-</html>
 
+</html>
