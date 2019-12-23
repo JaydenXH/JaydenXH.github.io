@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   height: 30px;
-  margin-top: 5px;
+  margin-top: -7px;
 }
 .container .box .role .block {
   width: 0%;
