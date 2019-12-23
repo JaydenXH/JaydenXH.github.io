@@ -35,16 +35,16 @@
   animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
   display: flex;
 }
-.container .box .title h1 {
-  font-family: 'Poppins';
+.container .box .title p {
+  font-family: 'HuaWenZhongSong-1';
   color: #fff;
-  font-weight: 800;
-  font-size: 32px;
+  /* font-weight: 800; */
+  font-size: 31px;
   animation: mainFadeIn 2s forwards;
   animation-delay: 1.6s;
   opacity: 0;
 }
-.container .box .title h1 span {
+.container .box .title p span {
   color: #ffb510;
 }
 .container .box .role {
@@ -68,8 +68,8 @@
   animation: secFadeIn 2s forwards;
   animation-delay: 3.2s;
   opacity: 0;
-  font-weight: 400;
-  font-family: 'Lato';
+  /* font-weight: 400; */
+  font-family: 'HuaWenZhongSong-1';
   color: #ffffff;
   font-size: 12px;
   text-transform: uppercase;
