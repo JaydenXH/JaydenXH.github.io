@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection"content="telephone=no, email=no" />
+        <meta name="renderer" content="webkit"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="MobileOptimized" content="640"/>
+        <meta name="screen-orientation" content="portrait"/>
+        <meta name="x5-orientation" content="portrait"/>
+        <meta name="full-screen" content="yes"/>
+        <meta name="x5-fullscreen" content="true"/>
+        <meta name="browsermode" content="application"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <title>恐龙大作战</title>
+        <link rel="stylesheet" href="css/swiper.min.css">
+        <link href="css/index.css" rel="stylesheet"/>
+    </head>
+    <body>
+
+
+        <div class="container" style="background: #B6E1D4">
+            <div>
+                <img src="images/header-introduction.gif"  />
+
+            </div>
+            <div class="video">
+                <div class="download-theme btn">
+                    <img src="images/download-theme.png" onclick="test()" style="cursor:pointer;"/>
+                </div>
+                <img src="images/video-bg.png"/>
+                <div class="video-btn btn">
+                    <img src="images/video.png" />
+                </div>
+                <div class="video-play">
+                    <video src="images/video.mp4" controls width="80%"></video>
+                </div>
+                <img src="images/video-mask.png" style="position: absolute; top: 0px; pointer-events: none;" />
+            </div>
+            <div class="play">
+                <img src="images/play-bg.png"/>
+            </div>
+            <div class="icon">
+                <img src="images/show-icon.png"/>
+            </div>
+            <div class="banner">
+                <img src="images/banner-bg.png"/>
+                <div class="banner-page">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/banner1.png" width="50%"></div>
+                            <div class="swiper-slide"><img src="images/banner2.png" width="50%"></div>
+                            <div class="swiper-slide"><img src="images/banner3.png" width="50%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pther-project">
+                <img src="images/other-project.png"/>
+                <div class="video-play2">
+                    <video src="images/video2.mp4" controls width="37%" autoplay muted loop></video>
+                </div>
+                <div class="video-play3">
+                    <video src="images/video3.mp4" controls width="37%" autoplay muted loop></video>
+                </div>
+            </div>
+        </div>
+
+
+<script src="./js/actUtils.js"></script>
+<script>
+    var channel = ActUtils.getQueryString('channelName');
+    console.log("channel", channel)
+
+    function test() {
+        var url = "oaps://theme/detail?rtp=theme&id=2173442&openinsystem=true"
+        if (android && android.openActivity) {
+            android.openActivity(url);
+        } else {
+            location.href = url;
+        }
+    }
+
+    function pay() {
+        var url = "ucvip://vip.themestore.com?pageType=pay";
+        location.href = url;
+    }
+</script>
+
+    <script src="js/swiper.min.js"></script>
+    <script src="js/resize.js"></script>
+
+
+
+   <script>
+//       <!--移动端自适应-->
+       (function(doc, win) {
+           var docEl = doc.documentElement,
+               resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+               recalc = function() {
+                   var clientWidth = docEl.clientWidth;
+                   if(!clientWidth) return;
+                   docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+               };
+           if(!doc.addEventListener) return;
+           win.addEventListener(resizeEvt, recalc, false);
+           doc.addEventListener('DOMContentLoaded', recalc, false);
+       })(document, window);
+
+
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView :'auto',
+            loopedSlides:3,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows : true,
+            },
+            loop:true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+   </script>
+    </body>
+    </html>
